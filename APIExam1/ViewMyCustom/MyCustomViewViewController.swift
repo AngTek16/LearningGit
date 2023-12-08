@@ -35,6 +35,8 @@ class MyCustomViewViewController: UIViewController {
     spaceShipCollection.delegate = self
     view.addSubview(spaceShipCollection)
     spaceShipCollection.addAnchors(left: 15, top: 60, right: 15, bottom: 30)
+    spaceShipCollection.backgroundColor = .white
+//    (left: 10, top: 20, right: 10, bottom: 30
   }
   
 }

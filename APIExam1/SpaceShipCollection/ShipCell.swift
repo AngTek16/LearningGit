@@ -20,30 +20,24 @@ class ShipCell: UICollectionViewCell {
   var missionNameLabel: UILabel = {
     var name = UILabel()
     name.textColor = .black
-//    name.textAlignment = .center
     name.numberOfLines = 2
-//    name.backgroundColor = .red
-    name.font = UIFont(name: "arial", size: 15)
+    name.font = UIFont(name: "Arial Bold", size: 22)
     return name
   }()
   let siteLabel: UILabel = {
     var site = UILabel()
+    site.textColor = .black
+    site.numberOfLines = 2
     site.font = UIFont(name: "arial", size: 15)
     return site
   }()
+  let launchLabel: UILabel = {
+    var launch = UILabel()
+    launch.textColor = .black
+    launch.numberOfLines = 2
+    launch.font = UIFont(name: "arial", size: 15)
+    return launch
   
-  var flightNumber: UILabel = {
-    var flightNumber = UILabel()
-    flightNumber.textColor = .systemMint
-    flightNumber.font = UIFont(name: "Montserrat", size: 10)
-    return flightNumber
-  }()
-  
-  var nacionality: UILabel = {
-    var nacionality = UILabel()
-    nacionality.textColor = .black
-    nacionality.font = UIFont(name: "Montserrat", size: 14)
-    return nacionality
   }()
   override init(frame: CGRect) {
     super.init(frame: .zero)
@@ -67,23 +61,20 @@ class ShipCell: UICollectionViewCell {
     cohete.addAnchorsAndSize(width: 100, height: 100, left: 15, top: 20, right: nil, bottom: nil)
     
     missionNameLabel.text = shipModelInformation.mission_name
-    missionNameLabel.backgroundColor = .red
+    missionNameLabel.backgroundColor = .white
     self.addSubview(missionNameLabel)
-    missionNameLabel.addAnchorsAndCenter(centerX: true, centerY: false, width: 250, height: 40, left: 30, top: 15, right: nil, bottom: nil,withAnchor: .left,relativeToView: cohete)
+    missionNameLabel.addAnchorsAndSize(width: 150, height: 40, left: 30, top: 15, right: nil, bottom: nil,withAnchor: .left,relativeToView: cohete)
     
-  
     
-//    let flight_number1 : Int =  shipModelInformation.flight_number ?? 0
-//    var flight_numberString = String(flight_number1)
-//    flightNumber.text = "NF: \(flight_numberString)"
-//    squareDegraded.addSubview(flightNumber)
-//    flightNumber.addAnchors(left: 5, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: name)
-//
-//    nacionality.text = shipModelInformation.rocket?.second_stage?.payloads![0].nationality
-//    squareDegraded.addSubview(nacionality)
-//    nacionality.addAnchors(left: nil, top: 5, right: 10, bottom: nil, withAnchor: .top, relativeToView: name)
-//
-    //        cohete.addAnchorsAndCenter(centerX: true, centerY: nil, width: 50, height: 50, left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: squareDegraded)
+    siteLabel.text = shipModelInformation.launch_site?.site_name
+    siteLabel.backgroundColor = .white
+    self.addSubview(siteLabel)
+    siteLabel.addAnchorsAndSize(width: 150, height: 40, left: 30, top: 45, right: nil, bottom: nil,withAnchor: .left,relativeToView: cohete)
+    
+    launchLabel.text = shipModelInformation.launch_year
+    launchLabel.backgroundColor = .white
+    self.addSubview(launchLabel)
+    launchLabel.addAnchorsAndSize(width: 150, height: 40, left: 30, top: 75, right: nil, bottom: nil,withAnchor: .left,relativeToView: cohete)
     
   }
   

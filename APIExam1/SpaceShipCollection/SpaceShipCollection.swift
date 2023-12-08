@@ -52,18 +52,17 @@ class SpaceShipCollection: UIView {
     func initUI(){
       
       self.addSubview(spacelabel)
-      spacelabel.addAnchorsAndCenter(centerX: true, centerY: false, width: 150, height: 30, left: nil, top: 10, right: nil, bottom: nil)
+      spacelabel.addAnchorsAndCenter(centerX: true, centerY: false, width: 150, height: 30, left: nil, top: 5, right: nil, bottom: nil)
       
       self.addSubview(launcheslabel)
-      launcheslabel.addAnchorsAndCenter(centerX: true, centerY: false, width: 50, height: 40, left: 10, top: 10, right: nil, bottom: nil,withAnchor: .top,relativeToView: spacelabel)
+      launcheslabel.addAnchorsAndCenter(centerX: true, centerY: false, width: 50, height: 40, left: 10, top: 5, right: nil, bottom: nil,withAnchor: .top,relativeToView: spacelabel)
       
         collectionViewShip.delegate = self // Paso 6
         collectionViewShip.dataSource = self // Paso 6
         collectionViewShip.register(ShipCell.self, forCellWithReuseIdentifier: "cell") // Paso 5
         self.addSubview(collectionViewShip) // Paso 7
       
-      collectionViewShip.addAnchors(left: 10, top: 20, right: 10, bottom: 30,withAnchor: .top,relativeToView: launcheslabel)
-      
+      collectionViewShip.addAnchors(left: 0, top: 5, right: 0, bottom: 0,withAnchor: .top,relativeToView: launcheslabel)
       
 
     }

@@ -9,81 +9,85 @@ import UIKit
 import SDWebImage
 
 class ShipCell: UICollectionViewCell {
+  
+  var shipModelInformation : ModelShip?
+  
+  var cohete : UIImageView = {
+    var cohete = UIImageView()
+    return cohete
+  }()
+  
+  var missionNameLabel: UILabel = {
+    var name = UILabel()
+    name.textColor = .black
+//    name.textAlignment = .center
+    name.numberOfLines = 2
+//    name.backgroundColor = .red
+    name.font = UIFont(name: "arial", size: 15)
+    return name
+  }()
+  let siteLabel: UILabel = {
+    var site = UILabel()
+    site.font = UIFont(name: "arial", size: 15)
+    return site
+  }()
+  
+  var flightNumber: UILabel = {
+    var flightNumber = UILabel()
+    flightNumber.textColor = .systemMint
+    flightNumber.font = UIFont(name: "Montserrat", size: 10)
+    return flightNumber
+  }()
+  
+  var nacionality: UILabel = {
+    var nacionality = UILabel()
+    nacionality.textColor = .black
+    nacionality.font = UIFont(name: "Montserrat", size: 14)
+    return nacionality
+  }()
+  override init(frame: CGRect) {
+    super.init(frame: .zero)
+  }
+  
+  func initUI(shipModelInformation: ModelShip){
+    self.shipModelInformation = shipModelInformation
+    self.backgroundColor = .white
+    self.layer.cornerRadius = 20
+    self.clipsToBounds = true
     
-    var shipModelInformation : ModelShip?
+    self.layer.masksToBounds = false
+    self.layer.shadowOpacity = 2
+    self.layer.shadowOffset = .zero
+    self.layer.shadowRadius = 2
+    self.layer.shouldRasterize = true
+    self.layer.cornerRadius = 4
     
-    var squareDegraded : UIView = {
-      var squareDegraded = UIView()
-        squareDegraded.layer.cornerRadius = 10
-        squareDegraded.clipsToBounds = true
-      return squareDegraded
-    }()
+    cohete.sd_setImage(with: URL(string: (shipModelInformation.links?.mission_patch)!), placeholderImage: UIImage(named: ""))
+    self.addSubview(cohete)
+    cohete.addAnchorsAndSize(width: 100, height: 100, left: 15, top: 20, right: nil, bottom: nil)
     
-    var name: UILabel = {
-        var name = UILabel()
-        name.textColor = .systemBlue
-        name.font = UIFont(name: "Montserrat", size: 14)
-        return name
-    }()
+    missionNameLabel.text = shipModelInformation.mission_name
+    missionNameLabel.backgroundColor = .red
+    self.addSubview(missionNameLabel)
+    missionNameLabel.addAnchorsAndCenter(centerX: true, centerY: false, width: 250, height: 40, left: 30, top: 15, right: nil, bottom: nil,withAnchor: .left,relativeToView: cohete)
     
-    var flightNumber: UILabel = {
-        var flightNumber = UILabel()
-        flightNumber.textColor = .systemMint
-        flightNumber.font = UIFont(name: "Montserrat", size: 10)
-        return flightNumber
-    }()
+  
     
-    var nacionality: UILabel = {
-        var nacionality = UILabel()
-        nacionality.textColor = .black
-        nacionality.font = UIFont(name: "Montserrat", size: 14)
-        return nacionality
-    }()
+//    let flight_number1 : Int =  shipModelInformation.flight_number ?? 0
+//    var flight_numberString = String(flight_number1)
+//    flightNumber.text = "NF: \(flight_numberString)"
+//    squareDegraded.addSubview(flightNumber)
+//    flightNumber.addAnchors(left: 5, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: name)
+//
+//    nacionality.text = shipModelInformation.rocket?.second_stage?.payloads![0].nationality
+//    squareDegraded.addSubview(nacionality)
+//    nacionality.addAnchors(left: nil, top: 5, right: 10, bottom: nil, withAnchor: .top, relativeToView: name)
+//
+    //        cohete.addAnchorsAndCenter(centerX: true, centerY: nil, width: 50, height: 50, left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: squareDegraded)
     
-    var cohete : UIImageView = {
-       var cohete = UIImageView()
-        cohete.image = UIImage(named: "Cohete")
-        return cohete
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-    }
-    
-    func initUI(shipModelInformation: ModelShip){
-        self.shipModelInformation = shipModelInformation
-        
-        let newLayer = CAGradientLayer()
-        newLayer.colors = [UIColor.purple.cgColor, UIColor.systemYellow.cgColor]
-        newLayer.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
-        squareDegraded.layer.addSublayer(newLayer)
-        
-        self.addSubview(squareDegraded)
-        squareDegraded.addAnchorsAndCenter(centerX: true, centerY: true, width: (width - 40) / 2, height: 50, left: nil, top: nil, right: nil, bottom: nil)
-        
-        name.text = shipModelInformation.mission_name
-        name.textAlignment = .center
-        squareDegraded.addSubview(name)
-        name.addAnchorsAndCenter(centerX: true, centerY: false, width: (width - 40) / 2, height: 16, left: nil, top: 5, right: nil, bottom: nil)
-        
-        let flight_number1 : Int =  shipModelInformation.flight_number ?? 0
-        var flight_numberString = String(flight_number1)
-        flightNumber.text = "NF: \(flight_numberString)"
-        squareDegraded.addSubview(flightNumber)
-        flightNumber.addAnchors(left: 5, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: name)
-        
-        nacionality.text = shipModelInformation.rocket?.second_stage?.payloads![0].nationality
-        squareDegraded.addSubview(nacionality)
-        nacionality.addAnchors(left: nil, top: 5, right: 10, bottom: nil, withAnchor: .top, relativeToView: name)
-        
-      
-      cohete.sd_setImage(with: URL(string: "https://i.pinimg.com/736x/4d/a0/58/4da058668d6f15bb27ee4ab6997ebd99.jpg"),placeholderImage: UIImage(named: "Cohete"))
-        addSubview(cohete)
-        cohete.addAnchorsAndCenter(centerX: true, centerY: nil, width: 50, height: 50, left: nil, top: 5, right: nil, bottom: nil, withAnchor: .top, relativeToView: squareDegraded)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 }

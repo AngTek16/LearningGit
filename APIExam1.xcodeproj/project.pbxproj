@@ -62,7 +62,6 @@
 				A9133961ED3E5EFA6E1BAAD6 /* Pods-APIExam1.debug.xcconfig */,
 				666CB7670BCBC10F2784FD94 /* Pods-APIExam1.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -87,12 +86,12 @@
 		662B3F102B1837C40014A7C2 /* APIExam1 */ = {
 			isa = PBXGroup;
 			children = (
-				66A0DFBE2B1D9BC300EF271D /* SpecificMision */,
+				662B3F292B198C2E0014A7C2 /* ViewMyCustom */,
+				66A0DFBE2B1D9BC300EF271D /* DetailSpecificMision */,
 				662B3F322B19966D0014A7C2 /* SpaceShipCollection */,
 				662B3F2E2B1990BF0014A7C2 /* NetworkManager */,
 				662B3F2D2B198CA20014A7C2 /* Utils */,
 				662B3F2C2B198C870014A7C2 /* ModelShip */,
-				662B3F292B198C2E0014A7C2 /* MyCustomView */,
 				662B3F112B1837C40014A7C2 /* AppDelegate.swift */,
 				662B3F132B1837C40014A7C2 /* SceneDelegate.swift */,
 				662B3F152B1837C40014A7C2 /* ViewController.swift */,
@@ -104,12 +103,12 @@
 			path = APIExam1;
 			sourceTree = "<group>";
 		};
-		662B3F292B198C2E0014A7C2 /* MyCustomView */ = {
+		662B3F292B198C2E0014A7C2 /* ViewMyCustom */ = {
 			isa = PBXGroup;
 			children = (
 				662B3F2A2B198C500014A7C2 /* MyCustomViewViewController.swift */,
 			);
-			path = MyCustomView;
+			path = ViewMyCustom;
 			sourceTree = "<group>";
 		};
 		662B3F2C2B198C870014A7C2 /* ModelShip */ = {
@@ -145,12 +144,12 @@
 			path = SpaceShipCollection;
 			sourceTree = "<group>";
 		};
-		66A0DFBE2B1D9BC300EF271D /* SpecificMision */ = {
+		66A0DFBE2B1D9BC300EF271D /* DetailSpecificMision */ = {
 			isa = PBXGroup;
 			children = (
 				66A0DFBF2B1D9C3600EF271D /* SpecificMisionViewController.swift */,
 			);
-			path = SpecificMision;
+			path = DetailSpecificMision;
 			sourceTree = "<group>";
 		};
 		FDA50DE9DF26DA702404D722 /* Frameworks */ = {
